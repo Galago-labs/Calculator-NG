@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # ← убираем Linux (тебе не нужен)
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -21,11 +21,11 @@ jobs:
 
       - run: npm ci
 
-      - name: Build Tauri (portable)
+      - name: Build Tauri
         run: npx tauri build
 
       - name: Upload portable exe
         uses: actions/upload-artifact@v4
         with:
           name: calculator-portable
-          path: src-tauri/target/release/*.exe
+          path: src-tauri/target/release/bundle/portable/*.exe
