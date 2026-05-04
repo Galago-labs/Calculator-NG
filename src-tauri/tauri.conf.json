@@ -29,7 +29,9 @@
     "targets": [],
 
     "icon": [
-      "icons/icon.ico"
+      "icons/icon.ico",
+      "icons/icon.png",
+      "icons/icon.icns"
     ],
 
     "shortDescription": "Minimal calculator",
