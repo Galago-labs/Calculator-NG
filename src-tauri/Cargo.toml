@@ -1,5 +1,5 @@
 [package]
-name = "Calculator-NG"
+name = "calculator-ng"
 version = "1.0.0"
 edition = "2021"
 authors = ["Galago-labs"]
