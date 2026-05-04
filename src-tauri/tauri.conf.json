@@ -1,0 +1,27 @@
+{
+  "productName": "Calculator",
+  "version": "1.0.0",
+  "identifier": "com.calculator.app",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Calculator",
+        "width": 400,
+        "height": 600,
+        "resizable": false,
+        "center": true
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": []
+  }
+}
