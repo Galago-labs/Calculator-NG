@@ -22,26 +22,23 @@ jobs:
       - name: Build frontend
         run: npm run build
 
-      - name: Download Neutralino and rcedit
-        run: |
-          curl -L https://github.com/neutralinojs/neutralinojs/releases/latest/download/neutralino-win_x64.exe -o Calculator-NG.exe
-          curl -L https://github.com/neutralinojs/neutralinojs/releases/latest/download/WebView.dll -o WebView.dll
-          curl -L https://github.com/electron/rcedit/releases/latest/download/rcedit-x64.exe -o rcedit.exe
+      - name: Install Neutralino CLI
+        run: npm install -g @neutralinojs/neu
+
+      - name: Download Neutralino binaries
+        run: neu update
+
+      - name: Build single-file app
+        run: neu build --embed-resources
 
       - name: Set file metadata
         run: |
-          .\rcedit.exe Calculator-NG.exe --set-version-string "CompanyName" "Galago-labs"
-          .\rcedit.exe Calculator-NG.exe --set-version-string "ProductName" "Calculator-NG"
-          .\rcedit.exe Calculator-NG.exe --set-version-string "LegalCopyright" "© 2026 Galago-labs"
-          .\rcedit.exe Calculator-NG.exe --set-file-version "1.0.0.0"
-          .\rcedit.exe Calculator-NG.exe --set-product-version "1.0.0.0"
-
-      - name: Package
-        run: |
-          mkdir output
-          copy Calculator-NG.exe output\
-          copy WebView.dll output\
-          xcopy dist output\dist\ /E /I
+          curl -L https://github.com/electron/rcedit/releases/latest/download/rcedit-x64.exe -o rcedit.exe
+          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "CompanyName" "Galago-labs"
+          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "ProductName" "Calculator-NG"
+          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "LegalCopyright" "2026 Galago-labs"
+          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-file-version "1.0.0.0"
+          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-product-version "1.0.0.0"
 
       - uses: actions/upload-artifact@v4
         with:
