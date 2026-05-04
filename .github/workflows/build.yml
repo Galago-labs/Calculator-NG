@@ -7,14 +7,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: windows-latest
-          - os: ubuntu-latest
-
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest  # ← убираем Linux (тебе не нужен)
 
     steps:
       - uses: actions/checkout@v4
@@ -22,22 +15,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Install Linux dependencies
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
-
       - run: npm ci
 
-      - uses: tauri-apps/tauri-action@v0
-          
-      - uses: actions/upload-artifact@v4
+      - name: Build Tauri (portable)
+        run: npx tauri build
+
+      - name: Upload portable exe
+        uses: actions/upload-artifact@v4
         with:
-          name: calculator-${{ matrix.os }}
-          path: src-tauri/target/release/bundle/
-          retention-days: 30
+          name: calculator-portable
+          path: src-tauri/target/release/*.exe
