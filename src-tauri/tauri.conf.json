@@ -24,7 +24,7 @@
     "targets": ["nsis"],
     "nsis": {
       "installMode": "currentUser"
-    }
+    },
     "icon": [
       "icons/icon.ico",
       "icons/icon.png",
