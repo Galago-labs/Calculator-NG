@@ -7,14 +7,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: windows-latest
-          - os: ubuntu-latest
-
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -22,22 +15,38 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
-      - uses: dtolnay/rust-toolchain@stable
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Install Linux dependencies
-        if: matrix.os == 'ubuntu-latest'
+      - name: Build frontend
+        run: npm run build
+
+      - name: Download Neutralino binaries
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+          curl -L https://github.com/neutralinojs/neutralinojs/releases/latest/download/neutralino-win_x64.exe -o Calculator-NG.exe
+          curl -L https://github.com/neutralinojs/neutralinojs/releases/latest/download/WebView.dll -o WebView.dll
 
-      - run: npm ci
+      - name: Set file metadata
+        run: |
+          $bytes = [System.IO.File]::ReadAllBytes("Calculator-NG.exe")
+          # Metadata через rcedit
+          curl -L https://github.com/electron/rcedit/releases/latest/download/rcedit-x64.exe -o rcedit.exe
+          .\rcedit.exe Calculator-NG.exe --set-version-string "CompanyName" "Galago-labs"
+          .\rcedit.exe Calculator-NG.exe --set-version-string "ProductName" "Calculator-NG"
+          .\rcedit.exe Calculator-NG.exe --set-version-string "LegalCopyright" "© 2026 Galago-labs"
+          .\rcedit.exe Calculator-NG.exe --set-file-version "1.0.0.0"
+          .\rcedit.exe Calculator-NG.exe --set-product-version "1.0.0.0"
 
-      - uses: tauri-apps/tauri-action@v0
-          
+      - name: Package into single folder
+        run: |
+          mkdir output
+          copy Calculator-NG.exe output\
+          copy WebView.dll output\
+          xcopy dist output\dist\ /E /I
+
       - uses: actions/upload-artifact@v4
         with:
-          name: Calculator-NG-${{ matrix.os }}
-          path: src-tauri/target/release/bundle/
+          name: Calculator-NG-windows
+          path: output/
           retention-days: 30
