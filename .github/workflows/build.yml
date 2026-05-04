@@ -38,6 +38,7 @@ jobs:
           .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "CompanyName" "Galago-labs"
           .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "ProductName" "Calculator-NG"
           .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "LegalCopyright" "2026 Galago-labs"
+          .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "FileDescription" "Mini Calculator"
           .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-file-version "1.0.0.0"
           .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-product-version "1.0.0.0"
 
