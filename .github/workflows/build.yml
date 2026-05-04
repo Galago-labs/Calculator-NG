@@ -33,13 +33,13 @@ jobs:
 
       - name: Set file metadata
         run: |
-          dir output\
+          dir output\Calculator-NG\
           curl -L https://github.com/electron/rcedit/releases/latest/download/rcedit-x64.exe -o rcedit.exe
-          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "CompanyName" "Galago-labs"
-          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "ProductName" "Calculator-NG"
-          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "LegalCopyright" "2026 Galago-labs"
-          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-file-version "1.0.0.0"
-          .\rcedit.exe output\Calculator-NG-win_x64.exe --set-product-version "1.0.0.0"
+          .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "CompanyName" "Galago-labs"
+          .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "ProductName" "Calculator-NG"
+          .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-version-string "LegalCopyright" "2026 Galago-labs"
+          .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-file-version "1.0.0.0"
+          .\rcedit.exe output\Calculator-NG\Calculator-NG-win_x64.exe --set-product-version "1.0.0.0"
 
       - uses: actions/upload-artifact@v4
         with:
