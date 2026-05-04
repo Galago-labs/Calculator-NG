@@ -33,6 +33,7 @@ jobs:
 
       - name: Set file metadata
         run: |
+          dir output\
           curl -L https://github.com/electron/rcedit/releases/latest/download/rcedit-x64.exe -o rcedit.exe
           .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "CompanyName" "Galago-labs"
           .\rcedit.exe output\Calculator-NG-win_x64.exe --set-version-string "ProductName" "Calculator-NG"
