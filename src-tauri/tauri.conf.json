@@ -22,6 +22,14 @@
   "bundle": {
     "active": true,
     "targets": ["portable"],
+    "windows": {
+      "digestAlgorithm": "sha256",
+      "certificateThumbprint": null
+    },
+    "copyright": "© 2026 Galago-labs",
+    "publisher": "Galago-labs",
+    "shortDescription": "Minimal calculator",
+    "longDescription": "Fast and minimal calculator for Windows",
     "icon": [
       "icons/icon.ico",
       "icons/icon.png",
