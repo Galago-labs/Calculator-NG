@@ -2,13 +2,11 @@
 name = "Calculator-NG"
 version = "1.0.0"
 edition = "2021"
-
-[package.metadata.bundle]
-identifier = "com.calculator.app"
+authors = ["Galago-labs"]
 
 [lib]
 name = "calculator_lib"
-crate-type = ["lib", "cdylib", "staticlib"]
+crate-type = ["cdylib"]
 
 [dependencies]
 tauri = { version = "2", features = [] }
@@ -20,5 +18,5 @@ tauri-build = { version = "2", features = [] }
 panic = "abort"
 codegen-units = 1
 lto = true
-opt-level = "s"
+opt-level = "z"
 strip = true
