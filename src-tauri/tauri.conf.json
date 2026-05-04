@@ -1,5 +1,5 @@
 {
-  "productName": "Calculator",
+  "productName": "Calculator-NG",
   "version": "1.0.0",
   "identifier": "com.calculator.app",
   "build": {
@@ -22,6 +22,10 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": []
+    "icon": [
+      "icons/icon.ico",
+      "icons/icon.png",
+      "icons/icon.icns"
+    ]
   }
 }
