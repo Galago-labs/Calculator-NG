@@ -1,0 +1,42 @@
+{
+  "applicationId": "com.calculator.app",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/dist/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "tokenSecurity": "one-time",
+  "logging": {
+    "enabled": false
+  },
+  "nativeAllowList": [
+    "app.*",
+    "os.*",
+    "window.*"
+  ],
+  "globalVariables": {},
+  "modes": {
+    "window": {
+      "title": "Calculator-NG",
+      "width": 360,
+      "height": 520,
+      "minWidth": 360,
+      "minHeight": 520,
+      "resizable": false,
+      "center": true,
+      "maximize": false,
+      "hidden": false,
+      "decorations": true,
+      "transparent": false,
+      "exitProcessOnClose": true
+    }
+  },
+  "cli": {
+    "binaryName": "Calculator-NG",
+    "resourcesPath": "/dist/",
+    "extensionsPath": "/extensions/",
+    "deploymentPatterns": ["dist/**"]
+  }
+}
