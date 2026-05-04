@@ -6,7 +6,7 @@ authors = ["Galago-labs"]
 
 [lib]
 name = "calculator_lib"
-crate-type = ["cdylib"]
+crate-type = ["lib", "cdylib", "staticlib"]
 
 [dependencies]
 tauri = { version = "2", features = [] }
@@ -18,5 +18,5 @@ tauri-build = { version = "2", features = [] }
 panic = "abort"
 codegen-units = 1
 lto = true
-opt-level = "z"
+opt-level = "s"
 strip = true
