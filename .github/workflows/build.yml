@@ -27,5 +27,5 @@ jobs:
       - name: Upload portable exe
         uses: actions/upload-artifact@v4
         with:
-          name: calculator-portable
-          path: src-tauri/target/release/bundle/portable/*.exe
+          name: Calculator-NG-Portable
+          path: src-tauri/target/release/Calculator-NG.exe
