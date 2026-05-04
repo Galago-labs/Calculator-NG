@@ -1,5 +1,5 @@
 {
-  "applicationId": "com.calculator.app",
+  "applicationId": "com.galago.calculator",
   "version": "1.0.0",
   "defaultMode": "window",
   "port": 0,
@@ -16,7 +16,6 @@
     "os.*",
     "window.*"
   ],
-  "globalVariables": {},
   "modes": {
     "window": {
       "title": "Calculator-NG",
@@ -27,16 +26,15 @@
       "resizable": false,
       "center": true,
       "maximize": false,
-      "hidden": false,
-      "decorations": true,
-      "transparent": false,
       "exitProcessOnClose": true
     }
   },
   "cli": {
     "binaryName": "Calculator-NG",
+    "applicationName": "Calculator-NG",
+    "applicationIcon": "dist/icon.png",
     "resourcesPath": "/dist/",
-    "extensionsPath": "/extensions/",
+    "distributionPath": "/output/",
     "deploymentPatterns": ["dist/**"]
   }
 }
