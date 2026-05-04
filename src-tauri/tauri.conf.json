@@ -1,39 +1,44 @@
 {
+  "$schema": "https://schema.tauri.app/config/2",
   "productName": "Calculator-NG",
   "version": "1.0.0",
-  "identifier": "com.calculator.app",
+  "identifier": "com.galago.calculator",
+
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:5173",
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build"
   },
+
   "app": {
     "windows": [
       {
         "title": "Calculator",
-        "width": 400,
-        "height": 600,
+        "width": 360,
+        "height": 520,
         "resizable": false,
-        "center": true
+        "center": true,
+        "decorations": false
       }
     ]
   },
+
   "bundle": {
     "active": true,
     "targets": ["portable"],
+
+    "icon": [
+      "icons/icon.ico"
+    ],
+
+    "shortDescription": "Minimal calculator",
+    "longDescription": "Fast, lightweight and beautiful calculator for Windows",
+    "copyright": "© 2026 Galago-labs",
+
     "windows": {
       "digestAlgorithm": "sha256",
-      "certificateThumbprint": null
-    },
-    "copyright": "© 2026 Galago-labs",
-    "publisher": "Galago-labs",
-    "shortDescription": "Minimal calculator",
-    "longDescription": "Fast and minimal calculator for Windows",
-    "icon": [
-      "icons/icon.ico",
-      "icons/icon.png",
-      "icons/icon.icns"
-    ]
+      "timestampUrl": ""
+    }
   }
 }
